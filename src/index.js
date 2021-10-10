@@ -15,16 +15,13 @@ const Theme = {
 const bodyRef = document.querySelector('body');
 const themeSwitch = document.querySelector('.theme-switch__toggle');
 
-window.addEventListener('load', onLoad);
-themeSwitch.addEventListener('change', switchTheme);
+bodyRef.classList.add(localStorage.getItem('theme') || Theme.LIGHT);
 
-function onLoad() {
-  bodyRef.classList.add(localStorage.getItem('theme') || Theme.LIGHT);
-
-  if (bodyRef.classList.contains(Theme.DARK)) {
-    themeSwitch.checked = true;
-  }
+if (bodyRef.classList.contains(Theme.DARK)) {
+  themeSwitch.checked = true;
 }
+
+themeSwitch.addEventListener('change', switchTheme);
 
 function switchTheme() {
   if (bodyRef.classList.contains(Theme.LIGHT)) {
